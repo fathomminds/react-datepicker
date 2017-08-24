@@ -51,6 +51,7 @@ export default class DatePicker extends React.Component {
     onChangeRaw: PropTypes.func,
     onFocus: PropTypes.func,
     onMonthChange: PropTypes.func,
+    onDayHighlighted: PropTypes.func,
     openToDate: PropTypes.object,
     peekNextMonth: PropTypes.bool,
     placeholderText: PropTypes.string,
@@ -91,6 +92,7 @@ export default class DatePicker extends React.Component {
       onSelect () {},
       onClickOutside () {},
       onMonthChange () {},
+      onDayHighlighted() {},
       popoverAttachment: 'top left',
       popoverTargetAttachment: 'bottom left',
       popoverTargetOffset: '10px 0',
@@ -311,6 +313,7 @@ export default class DatePicker extends React.Component {
           newSelection = copy.add(1, 'years')
           break
       }
+      this.props.onDayHighlighted(newSelection);
       this.setPreSelection(newSelection)
     }
   }
@@ -358,6 +361,7 @@ export default class DatePicker extends React.Component {
         monthsShown={this.props.monthsShown}
         onDropdownFocus={this.handleDropdownFocus}
         onMonthChange={this.props.onMonthChange}
+        onDayHighlighted={this.props.onDayHighlighted}
         className={this.props.calendarClassName}>
       {this.props.children}
     </WrappedCalendar>
