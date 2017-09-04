@@ -292,23 +292,26 @@ return /******/ (function(modules) { // webpackBootstrap
 	    };
 
 	    _this.onInputKeyDown = function (event) {
+	      var eventKey = event.key;
 	      if (!_this.state.open && !_this.props.inline) {
-	        _this.onInputClick();
+	        if (eventKey !== 'Enter' && eventKey !== 'Escape' && eventKey !== 'Tab') {
+	          _this.onInputClick();
+	        }
 	        return;
 	      }
 	      var copy = (0, _moment2.default)(_this.state.preSelection);
-	      if (event.key === 'Enter') {
+	      if (eventKey === 'Enter') {
 	        event.preventDefault();
 	        _this.handleSelect(copy, event);
-	      } else if (event.key === 'Escape') {
+	      } else if (eventKey === 'Escape') {
 	        event.preventDefault();
 	        _this.setOpen(false);
-	      } else if (event.key === 'Tab') {
+	      } else if (eventKey === 'Tab') {
 	        _this.setOpen(false);
 	      }
 	      if (!_this.props.disabledKeyboardNavigation) {
 	        var newSelection = void 0;
-	        switch (event.key) {
+	        switch (eventKey) {
 	          case 'ArrowLeft':
 	            event.preventDefault();
 	            newSelection = copy.subtract(1, 'days');
