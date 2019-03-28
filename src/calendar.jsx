@@ -74,6 +74,7 @@ export default class Calendar extends React.Component {
     onClickOutside: PropTypes.func.isRequired,
     onMonthChange: PropTypes.func,
     onYearChange: PropTypes.func,
+    onDayHighlighted: PropTypes.func,
     forceShowMonthNavigation: PropTypes.bool,
     onDropdownFocus: PropTypes.func,
     onSelect: PropTypes.func.isRequired,
@@ -214,7 +215,10 @@ export default class Calendar extends React.Component {
 
   handleDayClick = (day, event) => this.props.onSelect(day, event);
 
-  handleDayMouseEnter = day => this.setState({ selectingDate: day });
+  handleDayMouseEnter = day => {
+    this.props.onDayHighlighted(day);
+    return this.setState({ selectingDate: day });
+  };
 
   handleMonthMouseLeave = () => this.setState({ selectingDate: null });
 
