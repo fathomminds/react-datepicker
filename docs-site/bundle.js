@@ -37483,7 +37483,7 @@
           };
 
           _this.handleDayMouseEnter = function(day) {
-            _this.onDayHighlighted(day);
+            _this.props.onDayHighlighted(day);
             return _this.setState({ selectingDate: day });
           };
 

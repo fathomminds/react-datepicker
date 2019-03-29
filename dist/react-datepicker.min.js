@@ -1641,7 +1641,9 @@
             return o.props.onSelect(e, t);
           }),
           (o.handleDayMouseEnter = function(e) {
-            return o.onDayHighlighted(e), o.setState({ selectingDate: e });
+            return (
+              o.props.onDayHighlighted(e), o.setState({ selectingDate: e })
+            );
           }),
           (o.handleMonthMouseLeave = function() {
             return o.setState({ selectingDate: null });
